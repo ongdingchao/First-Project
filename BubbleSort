@@ -1,0 +1,35 @@
+//Simple BubbleSort
+#include <iostream>
+
+using namespace std;
+
+void BubbleSort(int ar[] , size_t);
+
+int main()
+{
+	int newArray[] = { 1 ,3 ,2 ,5 ,10, 9 ,4 ,7,8,6};
+
+	BubbleSort(newArray, 10);
+}
+
+
+void BubbleSort(int ar[] , size_t size)
+{
+	int temp;
+
+	for(int i = 0; i < size; i++)
+	{
+		for(int j = i + 1; j < size; j++)
+		{
+			if(ar[i] < ar[j])
+			{
+				temp = ar[j];
+				ar[j] = ar[i];
+				ar[i] = temp;
+			}
+			
+			
+		}
+		cout << ar[i] << endl;
+	}
+}
