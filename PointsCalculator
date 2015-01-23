@@ -1,0 +1,197 @@
+using UnityEngine;
+using System.Collections;
+
+public class PointsCalculator : MonoBehaviour {
+
+
+	private GameObject levelManager;
+	private int nConstant = 0;
+
+	public bool bApple;
+	public int wrongCounterApple;
+	public GameObject[] AppleCounter;
+
+	public bool bBag;
+	public int wrongCounterBag;
+	public GameObject[] BagCounter;
+
+	public bool bBall;
+	public int wrongCounterBall;
+	public GameObject[] BallCounter;
+
+	public bool bBanana;
+	public int wrongCounterBanana;
+	public GameObject[] BananaCounter;
+
+	public bool bBook;
+	public int wrongCounterBook;
+	public GameObject[] BookCounter;
+
+	public bool bEye;
+	public int wrongCounterEye;
+	public GameObject[] EyeCounter;
+
+	public bool bDog;
+	public int wrongCounterDog;
+	public GameObject[] DogCounter;
+
+	public bool bChair;
+	public int wrongCounterChair;
+	public GameObject[] ChairCounter;
+
+	public bool bCat;
+	public int wrongCounterCat;
+	public GameObject[] CatCounter;
+
+	public bool bCar;
+	public int wrongCounterCar;
+	public GameObject[] CarCounter;
+
+	public bool bHand;
+	public int wrongCounterHand;
+	public GameObject[] HandCounter;
+
+	public bool bHead;
+	public int wrongCounterHead;
+	public GameObject[] HeadCounter;
+
+	public bool bPencil;
+	public int wrongCounterPencil;
+	public GameObject[] PencilCounter;
+
+	public bool bScissors;
+	public int wrongCounterScissors;
+	public GameObject[] ScissorsCounter;
+
+	public bool bTree;
+	public int wrongCounterTree;
+	public GameObject[] TreeCounter;
+
+	// Use this for initialization
+	void Awake () 
+	{
+		levelManager = GameObject.Find("Level Manager");
+
+		levelManager.GetComponent<LevelManager>().TotalScore = nConstant;
+
+		bApple = GameObject.Find("Level Manager").GetComponent<LevelManager>().bAppleLoad;
+		wrongCounterApple = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterApple;
+
+		bBag = GameObject.Find("Level Manager").GetComponent<LevelManager>().bBagLoad;
+		wrongCounterBag = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterBag;
+
+		bBall = GameObject.Find("Level Manager").GetComponent<LevelManager>().bBallLoad;
+		wrongCounterBall = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterBall;
+
+		bBanana = GameObject.Find("Level Manager").GetComponent<LevelManager>().bBananaLoad;
+		wrongCounterBanana = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterBanana;
+
+		bBook = GameObject.Find("Level Manager").GetComponent<LevelManager>().bBookLoad;
+		wrongCounterBook = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterBook;
+
+		bEye = GameObject.Find("Level Manager").GetComponent<LevelManager>().bEyeLoad;
+		wrongCounterEye = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterEye;
+
+		bDog = GameObject.Find("Level Manager").GetComponent<LevelManager>().bDogLoad;
+		wrongCounterDog = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterDog;
+
+		bChair = GameObject.Find("Level Manager").GetComponent<LevelManager>().bChairLoad;
+		wrongCounterChair = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterChair;
+
+		bCat = GameObject.Find("Level Manager").GetComponent<LevelManager>().bCatLoad;
+		wrongCounterCat = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterCat;
+
+		bCar = GameObject.Find("Level Manager").GetComponent<LevelManager>().bCarLoad;
+		wrongCounterCar = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterCar;
+
+		bHand = GameObject.Find("Level Manager").GetComponent<LevelManager>().bHandLoad;
+		wrongCounterHand = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterHand;
+
+		bHead = GameObject.Find("Level Manager").GetComponent<LevelManager>().bHeadLoad;
+		wrongCounterHead = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterHead;
+
+		bPencil = GameObject.Find("Level Manager").GetComponent<LevelManager>().bPencilLoad;
+		wrongCounterPencil = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterPencil;
+
+		bScissors = GameObject.Find("Level Manager").GetComponent<LevelManager>().bScissorsLoad;
+		wrongCounterScissors = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterScissors;
+
+		bTree = GameObject.Find("Level Manager").GetComponent<LevelManager>().bTreeLoad;
+		wrongCounterTree = GameObject.Find("Level Manager").GetComponent<LevelManager>().nWrongCounterTree;
+
+
+	
+	}
+	
+	// Update is called once per frame
+	void Start () 
+	{
+		ReturnCounterStars(bApple, wrongCounterApple, AppleCounter);
+		
+		ReturnCounterStars(bBag , wrongCounterBag, BagCounter);
+		
+		ReturnCounterStars(bBall, wrongCounterBall, BallCounter);
+		
+		ReturnCounterStars(bBanana, wrongCounterBanana, BananaCounter);
+		
+		ReturnCounterStars(bBook, wrongCounterBook, BookCounter);
+		
+		ReturnCounterStars(bEye, wrongCounterEye, EyeCounter);
+		
+		ReturnCounterStars(bDog, wrongCounterDog, DogCounter);
+		
+		ReturnCounterStars(bChair, wrongCounterChair, ChairCounter);
+		
+		ReturnCounterStars(bCat, wrongCounterCat, CatCounter);
+		
+		ReturnCounterStars(bCar, wrongCounterCar, CarCounter);
+		
+		ReturnCounterStars(bHand, wrongCounterHand, HandCounter);
+		
+		ReturnCounterStars(bHead, wrongCounterHead, HeadCounter);
+		
+		ReturnCounterStars(bPencil, wrongCounterPencil, PencilCounter);
+		
+		ReturnCounterStars(bScissors, wrongCounterScissors, ScissorsCounter);
+		
+		ReturnCounterStars(bTree, wrongCounterTree, TreeCounter);
+		
+		nConstant = levelManager.GetComponent<LevelManager>().TotalScore;
+	}
+
+	void ReturnCounterStars(bool level, int counter, GameObject[] goArr)
+	{
+		if(level == false)
+		{
+			switch(counter)
+			{
+				case 0:
+					goArr[4].SetActive(true);
+					levelManager.GetComponent<LevelManager>().TotalScore += 5;
+					break;
+
+				case 1:
+					goArr[3].SetActive(true);
+					levelManager.GetComponent<LevelManager>().TotalScore += 4;
+					break;
+
+				case 2:
+					goArr[2].SetActive(true);
+					levelManager.GetComponent<LevelManager>().TotalScore += 3;
+					break;
+
+				case 3:
+					goArr[1].SetActive(true);
+					levelManager.GetComponent<LevelManager>().TotalScore += 2;
+					break;
+
+				case 4:
+					goArr[0].SetActive(true);
+					levelManager.GetComponent<LevelManager>().TotalScore += 1;
+					break;
+				default:
+				break;
+			}
+		}
+	}
+}
