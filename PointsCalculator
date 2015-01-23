@@ -1,3 +1,5 @@
+
+//This class is used for calculating score for my Augmented Reality Project,  feel free to use/modify my code.
 using UnityEngine;
 using System.Collections;
 
